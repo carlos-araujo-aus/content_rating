@@ -4,24 +4,26 @@ import './ContentRating.css';
 class ContentRating extends Component {
   constructor() {
     super();
-    this.state = { likes: 0, dislikes: 0 }
+    this.state = { likes: 0, dislikes: 0, totalRating: 0 }
   }
   
   handleLike = () => {
     this.setState((prevState) => ({
-      likes: prevState.likes + 1
+      likes: prevState.likes + 1,
+      totalRating: prevState.totalRating + 1
     }));
   }
   handleDislike = () => {
     this.setState((prevState) => ({
-      dislikes: prevState.dislikes + 1
+      dislikes: prevState.dislikes + 1,
+      totalRating: prevState.totalRating + 1
     }));
   }
 
   render() {
     return (
       <>
-        <h1>Text Content Rating</h1>
+        <h1>Content Rating</h1>
         <div className='content-rating'>
           <p>Text</p>
           <div className='raing-buttons'>
@@ -32,6 +34,7 @@ class ContentRating extends Component {
               Dislike ({this.state.dislikes}) 
             </button>
           </div>
+          <p>Total Rating: {this.state.totalRating}</p>
         </div>     
       </>
     );
